@@ -46,7 +46,7 @@ if not url or not url.startswith("http"):
 ydl_opts = {'outtmpl': os.path.join(outdir, '%(title)s.%(ext)s')}
 
 with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-    selector = ydl.build_format_selector('best[ext=mp4]')
+    selector = ydl.build_format_selector('best[ext=mp4][height<=?1080]')
 
     info = ydl.extract_info(url, download=False)
     if info.get('_type') == 'playlist':
