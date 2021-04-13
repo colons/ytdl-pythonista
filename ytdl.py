@@ -52,7 +52,7 @@ with youtube_dl.YoutubeDL(ydl_opts) as ydl:
     if info.get('_type') == 'playlist':
         raise NotImplementedError(f'{url} is a playlist')
 
-    info['selected_format'], = selector({'formats': item['formats']})
+    info['selected_format'], = selector({'formats': info['formats']})
 
     if sys.argv[1:] == ['--stream']:
         app = UIApplication.sharedApplication()
