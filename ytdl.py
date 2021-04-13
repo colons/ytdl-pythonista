@@ -58,7 +58,7 @@ with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         app = UIApplication.sharedApplication()
         params = {'url': info['formats'][-1]['url']}
         # app.openURL_(nsurl('vlc-x-callback://x-callback-url/stream?' + urlencode(params)))
-        app.openURL_(nsurl(params['url'])
+        app.openURL_(nsurl(params['url']))
     else:
         filepath = ydl.prepare_filename(info)
 
