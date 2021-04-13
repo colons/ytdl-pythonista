@@ -61,5 +61,6 @@ with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         app.openURL_(nsurl(params['url']))
     else:
         filepath = ydl.prepare_filename(info)
-
         console.open_in(filepath)
+
+appex.finish()
