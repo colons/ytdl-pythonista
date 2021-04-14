@@ -20,14 +20,7 @@ Directions:
 from __future__ import unicode_literals
 import youtube_dl
 import appex
-import os
 from objc_util import UIApplication, nsurl
-
-outdir = os.path.expanduser("~/Documents/Downloads")
-try:
-    os.mkdir(outdir)
-except FileExistsError:
-    pass
 
 url = appex.get_url()
 
@@ -41,9 +34,7 @@ print("URL: ", url)
 if not url or not url.startswith("http"):
     url = input("No URL found - enter URL to download: ")
 
-ydl_opts = {'outtmpl': os.path.join(outdir, '%(title)s.%(ext)s')}
-
-with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+with youtube_dl.YoutubeDL() as ydl:
     selector = ydl.build_format_selector('best[ext=mp4][height<=?1080]')
 
     info = ydl.extract_info(url, download=False)
