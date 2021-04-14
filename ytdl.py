@@ -20,9 +20,7 @@ Directions:
 from __future__ import unicode_literals
 import youtube_dl
 import appex
-import console
 import os
-import sys
 from objc_util import UIApplication, nsurl
 
 outdir = os.path.expanduser("~/Documents/Downloads")
@@ -52,14 +50,9 @@ with youtube_dl.YoutubeDL(ydl_opts) as ydl:
     if info.get('_type') == 'playlist':
         raise NotImplementedError(f'{url} is a playlist')
 
-    info['selected_format'], = selector({'formats': info['formats']})
-
-    if sys.argv[1:] == ['--stream']:
-        app = UIApplication.sharedApplication()
-        params = {'url': info['formats'][-1]['url']}
-        app.openURL_(nsurl(params['url']))
-    else:
-        filepath = ydl.prepare_filename(info)
-        console.open_in(filepath)
+    selected_format, = selector({'formats': info['formats']})
+    video_url = selected_format['url']
+    app = UIApplication.sharedApplication()
+    app.openURL_(nsurl(video_url))
 
 appex.finish()
