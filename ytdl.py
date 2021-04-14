@@ -1,22 +1,5 @@
 #!python3
 
-'''
-Directions:
-
-- install youtube-dl via Pip (e.g. using the StaSh command:
-  https://github.com/ywangd/stash)
-- add this script as a Share extension through Settings -> Share Extension
-  Shortcuts
-- while watching a video in the YouTube site or app, just share the video to
-  Pythonista and select this script
-- the video will download, and when it's done you can share the video file
-  itself with any app (e.g. VLC) Advanced usage:
-- if you specify --stream as the script argument, this script will just grab
-  the actual video URL and redirect you to VLC, which will stream the video
-  (without interruptions or ads!)
-
-'''
-
 from __future__ import unicode_literals
 import youtube_dl
 import appex
